@@ -4,8 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Id;
 
-
-import org.springframework.data.solr.core.mapping.Indexed;
+import org.apache.solr.client.solrj.beans.Field;
 import org.springframework.data.solr.core.mapping.SolrDocument;
 
 
@@ -18,26 +17,25 @@ public class Student implements Serializable {
 	private static final long serialVersionUID = 7109001549274805142L;
 
 	@Id
-	@Indexed(name = "id", type = "long")
-	private Long id;
+	@Field
+	private String id;
 	
-
-	@Indexed(name = "firstName", type = "string")
+	@Field
 	private String firstName;
 	
-	@Indexed(name = "lastName", type = "string")
+	@Field
 	private String lastName;
 	
-	@Indexed(name = "email", type = "string")
+	@Field
 	private String email;
 	
-	@Indexed(name = "dept", type = "string")
+	@Field
 	private String dept;
 	
-	@Indexed(name = "Phone", type = "string")
+	@Field
 	private String Phone;
 	
-	@Indexed(name = "DOB", type = "string")
+	@Field
 	private String DOB;
 	
 	public Student() {
@@ -92,11 +90,12 @@ public class Student implements Serializable {
 	public String getEmail() {
 		return email;
 	}
-	public Long getId() {
+
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -104,3 +103,5 @@ public class Student implements Serializable {
 		this.email = email;
 	}
 }
+
+   

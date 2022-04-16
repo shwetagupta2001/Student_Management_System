@@ -9,10 +9,10 @@ public interface StudentService {
 
 	Student saveStudent(Student student);
 
-	Student getStudentById(Long id);
+	Student getStudentById(String id);
 
 	Student updateStudent(Student student);
 
-	void deleteStudentById(Long id);
+	void deleteStudentById(String id);
 
 }

@@ -1,6 +1,7 @@
 package com.prog.service.impl;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
@@ -33,13 +34,14 @@ public class StudentServiceImpl implements StudentService{
 
 	@Override
 	public Student saveStudent(Student student) {
+		student.setId(UUID.randomUUID().toString());
 		studentSearchRepository.save(performMappingToStudentSolr(student));
 		return studentRepository.save(student);
 	}
 
 	@Override
 	@Cacheable(key="#id")
-	public Student getStudentById(Long id) {
+	public Student getStudentById(String id) {
 		return studentRepository.findById(id).get();
 	}
 
@@ -50,7 +52,7 @@ public class StudentServiceImpl implements StudentService{
 	}
 
 	@Override
-	public void deleteStudentById(Long id) {
+	public void deleteStudentById(String id) {
 		System.out.println(id);
 		studentSearchRepository.deleteById(id);
 		studentRepository.deleteById(id);	

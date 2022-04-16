@@ -6,6 +6,6 @@ import com.prog.entity.Student;
 
 
 
-public interface StudentRepository extends JpaRepository<Student, Long>{
+public interface StudentRepository extends JpaRepository<Student, String>{
 
 }

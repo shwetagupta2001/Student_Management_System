@@ -5,7 +5,6 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
@@ -23,8 +22,8 @@ public class Student implements Serializable {
 	private static final long serialVersionUID = 7109001549274805142L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@Column(length = 50)
+	private String id;
 	
 	@NotEmpty(message = "FirstName can not be empty!!")
 	@Column(name = "first_name", nullable = false)
@@ -89,12 +88,15 @@ public class Student implements Serializable {
 		DOB = dOB;
 	}
 
-	public Long getId() {
+
+	public String getId() {
 		return id;
 	}
-	public void setId(Long id) {
+
+	public void setId(String id) {
 		this.id = id;
 	}
+
 	public String getFirstName() {
 		return firstName;
 	}

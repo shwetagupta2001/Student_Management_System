@@ -8,7 +8,7 @@ import org.springframework.data.solr.repository.SolrCrudRepository;
 
 
 
-public interface StudentSearchRepository extends SolrCrudRepository<com.prog.entity.solr.Student, Long>{
+public interface StudentSearchRepository extends SolrCrudRepository<com.prog.entity.solr.Student, String>{
 	@Query(value = "select * from student s where s.firstName like %:keyword%", nativeQuery = true)
 	List<com.prog.entity.solr.Student> findByFirstName(@Param("keyword") String keyword);
 
@@ -18,8 +18,8 @@ public interface StudentSearchRepository extends SolrCrudRepository<com.prog.ent
 	/* com.prog.entity.solr.Student findByName(String name); */
 
 	com.prog.entity.solr.Student findByEmail(String email);
-
-
+	
+	
 
 }
 
